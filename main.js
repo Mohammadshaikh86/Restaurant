@@ -122,11 +122,29 @@ function handleLogout() {
     window.location.href = 'index.html';
 }
 
-// Sidebar toggle functionality
+// Sidebar functionality
 function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
-    document.querySelector('.main-content').classList.toggle('sidebar-active');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (sidebar && mainContent) {
+        sidebar.classList.toggle('active');
+        mainContent.classList.toggle('sidebar-active');
+    }
 }
+
+// Close sidebar when clicking outside
+document.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    
+    if (sidebar && sidebar.classList.contains('active') &&
+        !sidebar.contains(e.target) &&
+        !sidebarToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        document.querySelector('.main-content').classList.remove('sidebar-active');
+    }
+});
 
 // Function to handle notifications
 function handleNotifications() {
