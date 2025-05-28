@@ -1,6 +1,33 @@
 // Constants
 const PROTECTED_PAGES = ['profile.html', 'settings.html', 'favorites.html', 'order-history.html', 'notifications.html', 'address-book.html'];
 
+// Theme management
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update theme toggle button icon
+    const themeIcon = document.querySelector('.theme-toggle i');
+    if (themeIcon) {
+        themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}
+
+// Initialize theme on page load
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update theme toggle button icon
+    const themeIcon = document.querySelector('.theme-toggle i');
+    if (themeIcon) {
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}
+
 // User state management
 let isLoggedIn = false;
 let currentUser = null;
@@ -303,11 +330,11 @@ function deleteAddress(index) {
 
 // Initialize all page functionality
 function initializePage() {
+    initializeTheme();
     checkLoginStatus();
     initializeAnimations();
     handleNotifications();
     handleFavorites();
-    handleProfileUpload();
     handleMenuInteractions();
 
     // Add smooth scrolling to all internal links
