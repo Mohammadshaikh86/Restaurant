@@ -35,7 +35,7 @@ function updateUIForLoggedInUser() {
     
     if (sidebarHeader) {
         sidebarHeader.innerHTML = `
-            <img src="${currentUser.profileImage || 'download.jpg'}" alt="User Profile" class="profile-image">
+            <img src="${currentUser.profileImage || 'download3.jpg'}" alt="User Profile" class="profile-image">
             <h3>Welcome</h3>
             <p>${currentUser.name || 'User'}</p>
         `;
@@ -81,7 +81,7 @@ function handleLogin(event) {
     const user = {
         email: email,
         name: email.split('@')[0],
-        profileImage: 'download.jpg'
+        profileImage: 'download3.jpg'
     };
 
     localStorage.setItem('user', JSON.stringify(user));
@@ -103,7 +103,7 @@ function handleSignup(event) {
     const user = {
         name: fullName,
         email: email,
-        profileImage: 'download.jpg'
+        profileImage: 'download3.jpg'
     };
 
     localStorage.setItem('user', JSON.stringify(user));
@@ -176,13 +176,35 @@ function handleFavorites() {
     }
 }
 
-// Function to handle profile image upload
+// Function to update all profile images on the page
+function updateProfileImages(imageSrc) {
+    // Update sidebar profile image
+    const sidebarProfileImg = document.querySelector('.sidebar-header .profile-image');
+    if (sidebarProfileImg) {
+        sidebarProfileImg.src = imageSrc;
+    }
+
+    // Update main profile image if on profile page
+    const profilePic = document.getElementById('profile-pic');
+    if (profilePic) {
+        profilePic.src = imageSrc;
+    }
+
+    // Update user data in localStorage
+    if (currentUser) {
+        currentUser.profileImage = imageSrc;
+        localStorage.setItem('user', JSON.stringify(currentUser));
+    }
+}
+
+// Update profile upload handler
 function handleProfileUpload() {
     const uploadBtn = document.querySelector('.avatar-upload');
     if (uploadBtn) {
         uploadBtn.addEventListener('click', function() {
-            // Simulate file upload
-            alert('File upload functionality would go here');
+            // In a real app, this would open a file picker
+            // For now, we'll just set it to download3.jpg
+            updateProfileImages('download3.jpg');
         });
     }
 }
