@@ -303,14 +303,33 @@ function initializePage() {
     if (addressForm) {
         addressForm.addEventListener('submit', handleAddressSubmit);
         loadAddresses();
-    }
-    
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        const modal = document.getElementById('addressFormModal');
-        if (event.target === modal) {
-            hideAddressForm();
-        }
+
+        // Add modal close functionality
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('addressFormModal');
+            if (e.target === modal) {
+                hideAddressForm();
+            }
+        });
+
+        const editAddress = (index) => {
+            const addresses = JSON.parse(localStorage.getItem('addresses') || '[]');
+            const address = addresses[index];
+            if (!address) return;
+
+            // Fill form with address data
+            document.getElementById('addressType').value = address.type;
+            document.getElementById('fullName').value = address.name;
+            document.getElementById('streetAddress').value = address.street;
+            document.getElementById('apartment').value = address.apartment || '';
+            document.getElementById('city').value = address.city;
+            document.getElementById('state').value = address.state;
+            document.getElementById('zipCode').value = address.zip;
+            document.getElementById('phone').value = address.phone;
+
+            // Show modal
+            showAddAddressForm();
+        };
     }
 }
 
