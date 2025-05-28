@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - resto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="download.jpg" alt="User Profile" class="profile-image">
+            <h3>Welcome</h3>
+            <p>Guest User</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="favorites.html"><i class="fas fa-heart"></i> Favorites</a></li>
+            <li><a href="order-history.html"><i class="fas fa-history"></i> Order History</a></li>
+            <li><a href="address-book.html"><i class="fas fa-address-book"></i> Address Book</a></li>
+            <li><a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li class="sidebar-divider"></li>
+            <li><a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            <li><a href="signup.html" class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+            <li><a href="login.html" onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="navbar">
+            <div class="nav-brand">resto</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="location.html">Location</a></li>
+            </ul>
+        </nav>
+
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-cover"></div>
+                <div class="profile-avatar-container">
+                    <div class="profile-avatar">
+                        <img src="download.jpg" alt="Profile Picture" id="profile-pic">
+                        <div class="avatar-upload">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-info animate-up">
+                    <h1>John Doe</h1>
+                    <p class="member-since">Member since May 2025</p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-card animate-up" style="animation-delay: 0.2s">
+                        <i class="fas fa-utensils"></i>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-up" style="animation-delay: 0.4s">
+                        <i class="fas fa-heart"></i>
+                        <div class="stat-info">
+                            <h3>5</h3>
+                            <p>Favorites</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-up" style="animation-delay: 0.6s">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-info">
+                            <h3>4.8</h3>
+                            <p>Rating</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity animate-up" style="animation-delay: 0.8s">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-shopping-bag"></i>
+                            <div class="activity-info">
+                                <p>Ordered Grilled Salmon</p>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-heart"></i>
+                            <div class="activity-info">
+                                <p>Added Tiramisu to favorites</p>
+                                <span>5 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-star"></i>
+                            <div class="activity-info">
+                                <p>Reviewed Beef Tenderloin</p>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
